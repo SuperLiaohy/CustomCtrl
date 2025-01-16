@@ -2,3 +2,14 @@
 -- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug
+
+无法获取编译器信息:
+	编译器退出，错误代码 1: D:\Keil_541\ARM\ARMCLANG\bin\armclang.exe -xc -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DSTM32F407xx -DUSE_HAL_DRIVER -g -std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fpch-preprocess -v -dD -E
+	Product: MDK-ARM Lite 5.41
+	Component: Arm Compiler for Embedded 6.22
+	Tool: armclang [5ee92100]
+	
+	Target: unspecified-arm-none-unspecified
+	armclang: fatal error: no target architecture given; use --target=arm-arm-none-eabi or --target=aarch64-arm-none-eabi
+	
+	

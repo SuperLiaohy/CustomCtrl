@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "MyExecutable.exe"
+			"path" : "CustomCtrl.exe"
 		},
 		{
-			"path" : "MyExecutable.pdb"
+			"path" : "CustomCtrl.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,8 +14,10 @@
 		"commands" : 
 		[
 			"add_executable",
-			"link_directories",
-			"target_link_libraries",
+			"add_link_options",
+			"add_compile_options",
+			"add_compile_definitions",
+			"add_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -30,25 +32,37 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 48,
+				"line" : 88,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 38,
+				"line" : 60,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 51,
+				"line" : 59,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 22,
+				"line" : 58,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 66,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 68,
 				"parent" : 0
 			}
 		]
@@ -59,61 +73,96 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__EVAL -gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Own/Inc -I./RTE/_CustomCtrl -ID:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include -ID:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include -D__UVISION_VERSION=541 -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -o CustomCtrl/*.o -MMD -g -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu99 -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mfpu=fpv4-sp-d16"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "ARM_MATH_CM4"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "ARM_MATH_MATRIX_CHECK"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "ARM_MATH_ROUNDING"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "STM32F407xx"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "USE_HAL_DRIVER"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Core/Inc"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Include"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Own/Inc"
 				},
 				{
-					"backtrace" : 4,
-					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/./RTE/_CustomCtrl"
-				},
-				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"path" : "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				}
 			],
 			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "99"
+			},
 			"sourceIndexes" : 
 			[
 				0,
@@ -153,28 +202,28 @@
 			]
 		}
 	],
-	"id" : "MyExecutable::@6890427a1f51a3e7e1df",
+	"id" : "CustomCtrl::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__EVAL -gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Own/Inc -I./RTE/_CustomCtrl -ID:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include -ID:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include -D__UVISION_VERSION=541 -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -o CustomCtrl/*.o -MMD -g",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "--cpu=Cortex-M4.fp.sp *.o --strict --scatter=CustomCtrl/CustomCtrl.sct --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers --list=CustomCtrl.map -o CustomCtrl/CustomCtrl.axf",
+				"fragment" : "",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LC:\\Users\\Administrator\\Documents\\Keil\\CustomCtrl\\lib",
-				"role" : "libraryPath"
+				"fragment" : "-mfloat-abi=hard",
+				"role" : "flags"
 			},
 			{
-				"backtrace" : 3,
-				"fragment" : "-lm",
-				"role" : "libraries"
+				"backtrace" : 2,
+				"fragment" : "-mfpu=fpv4-sp-d16",
+				"role" : "flags"
 			},
 			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
@@ -183,8 +232,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "MyExecutable",
-	"nameOnDisk" : "MyExecutable.exe",
+	"name" : "CustomCtrl",
+	"nameOnDisk" : "CustomCtrl.exe",
 	"paths" : 
 	{
 		"build" : ".",
