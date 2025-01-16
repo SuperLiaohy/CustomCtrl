@@ -23,13 +23,15 @@ endif()
 # 编译器标准
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 通用编译标志
 set(COMMON_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 
 # 设置编译器标志
 set(CMAKE_C_FLAGS "${COMMON_FLAGS} -xc -std=c99 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar")
-set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
+#set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
+set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -xc++  -fno-rtti -fno-exceptions -funsigned-char -fshort-enums -fshort-wchar")
 set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} -masm=auto")
 
 # 链接器标志
@@ -76,9 +78,11 @@ file(GLOB SOURCES
         "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/*.c"
         "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/*.c"
 )
-
+file(GLOB OWN_SOURCES
+        "Own/Src/*.c" "Own/Src/*.cpp"
+)
 # 创建可执行文件
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} ${OWN_SOURCES})
 
 # 设置输出文件扩展名
 set_target_properties(${PROJECT_NAME} PROPERTIES
