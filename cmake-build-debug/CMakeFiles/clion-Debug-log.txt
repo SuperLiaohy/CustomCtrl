@@ -1,15 +1,4 @@
-"D:\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\Administrator\Documents\Keil\CustomCtrl -B C:\Users\Administrator\Documents\Keil\CustomCtrl\cmake-build-debug
--- Configuring done (0.7s)
+"D:\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe" -DCMAKE_TOOLCHAIN_FILE=arm-none-eabi-toolchain.cmake -G Ninja -S C:\Users\Administrator\Documents\Keil\CustomCtrl -B C:\Users\Administrator\Documents\Keil\CustomCtrl\cmake-build-debug
+-- Configuring done (2.9s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug
-
-无法获取编译器信息:
-	编译器退出，错误代码 1: D:\Keil_541\ARM\ARMCLANG\bin\armclang.exe -xc -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DSTM32F407xx -DUSE_HAL_DRIVER -g -std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fpch-preprocess -v -dD -E
-	Product: MDK-ARM Lite 5.41
-	Component: Arm Compiler for Embedded 6.22
-	Tool: armclang [5ee92100]
-	
-	Target: unspecified-arm-none-unspecified
-	armclang: fatal error: no target architecture given; use --target=arm-arm-none-eabi or --target=aarch64-arm-none-eabi
-	
-	
