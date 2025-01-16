@@ -17,7 +17,6 @@
 			"add_link_options",
 			"add_compile_options",
 			"add_compile_definitions",
-			"add_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -32,37 +31,31 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 106,
+				"line" : 103,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 74,
+				"line" : 72,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 73,
+				"line" : 66,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 72,
+				"line" : 57,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 80,
-				"parent" : 0
-			},
-			{
-				"command" : 5,
-				"file" : 0,
-				"line" : 82,
+				"line" : 78,
 				"parent" : 0
 			}
 		]
@@ -99,58 +92,58 @@
 					"define" : "ARM_MATH_ROUNDING"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"define" : "STM32F407xx"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"define" : "USE_HAL_DRIVER"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Core/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Own/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				}
 			],
@@ -233,58 +226,58 @@
 					"define" : "ARM_MATH_ROUNDING"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"define" : "STM32F407xx"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"define" : "USE_HAL_DRIVER"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Core/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Drivers/CMSIS/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/Users/Administrator/Documents/Keil/CustomCtrl/../Own/Inc"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				}
 			],

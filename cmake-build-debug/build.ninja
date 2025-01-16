@@ -358,7 +358,7 @@ build CustomCtrl.exe: C_EXECUTABLE_LINKER__CustomCtrl_Debug CMakeFiles/CustomCtr
   LINK_FLAGS = -mfloat-abi=hard -mfpu=fpv4-sp-d16
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CustomCtrl.dir
-  POST_BUILD = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Administrator\Documents\Keil\CustomCtrl\cmake-build-debug && fromelf.exe --i32combined --output="C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.hex" C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.elf"
+  POST_BUILD = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Administrator\Documents\Keil\CustomCtrl\cmake-build-debug && D:\Keil_541\ARM\ARMCLANG\bin\fromelf.exe --i32combined --output="C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.hex" C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.elf && D:\Keil_541\ARM\ARMCLANG\bin\fromelf.exe --bin --output="C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.bin" C:/Users/Administrator/Documents/Keil/CustomCtrl/cmake-build-debug/CustomCtrl.elf"
   PRE_LINK = cd .
   TARGET_FILE = CustomCtrl.exe
   TARGET_IMPLIB = libCustomCtrl.dll.a

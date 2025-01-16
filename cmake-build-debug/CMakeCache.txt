@@ -15,6 +15,9 @@
 ########################
 
 //Path to a program.
+ARMCLANG_COMPILER:FILEPATH=D:/Keil_541/ARM/ARMCLANG/bin/armclang.exe
+
+//Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=D:/CLion 2024.2.2/bin/mingw/bin/addr2line.exe
 
 //Path to a program.

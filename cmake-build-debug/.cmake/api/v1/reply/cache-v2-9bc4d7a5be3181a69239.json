@@ -2,6 +2,18 @@
 	"entries" : 
 	[
 		{
+			"name" : "ARMCLANG_COMPILER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "D:/Keil_541/ARM/ARMCLANG/bin/armclang.exe"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[

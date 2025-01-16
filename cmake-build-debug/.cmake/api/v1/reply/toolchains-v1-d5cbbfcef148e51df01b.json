@@ -7,7 +7,7 @@
 			{
 				"id" : "GNU",
 				"implicit" : {},
-				"path" : "armclang.exe",
+				"path" : "D:/Keil_541/ARM/ARMCLANG/bin/armclang.exe",
 				"version" : ""
 			},
 			"language" : "ASM",
@@ -35,7 +35,7 @@
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "armclang.exe",
+				"path" : "D:/Keil_541/ARM/ARMCLANG/bin/armclang.exe",
 				"version" : "13.1.0"
 			},
 			"language" : "C",
@@ -65,7 +65,7 @@
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "armclang.exe",
+				"path" : "D:/Keil_541/ARM/ARMCLANG/bin/armclang.exe",
 				"version" : "13.1.0"
 			},
 			"language" : "CXX",
