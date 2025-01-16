@@ -6,13 +6,27 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
 
 # 设置架构
-set(PROJECT_NAME  CustomCtrl)
-set(CMAKE_SYSTEM_PROCESSOR  Cortex-M4)
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR ARM)
 
-# 设置编译器
+############################################################
+# 1. 指定编译器和链接器，避免使用默认的 gcc
+############################################################
+# 设置编译器 C 的编译器
 set(CMAKE_C_COMPILER armclang.exe)
+set(CMAKE_C_COMPILER_WORKS TRUE)
+
+# 即便用不到C++ 的编译器，还是要显示说明的,否则报错
 set(CMAKE_CXX_COMPILER armclang.exe)
+set(CMAKE_CXX_COMPILER_WORKS TRUE)
+
+#设置 ASM 的编译器（不设置配合 -masm=auto 使用）
 set(CMAKE_ASM_COMPILER armclang.exe)
+#set(CMAKE_ASM_COMPILER armasm.exe)     # 指明 ASM 编译器，配合 第二种 CMAKE_ASM_FLAGS_INIT 方式使用
+set(CMAKE_ASM_COMPILER_WORKS TRUE)
+
+#设置链接器
+# CMAKE_C_LINK_EXECUTABLE 这种写法可能会有问题，建议改为：
 set(CMAKE_LINKER armlink.exe)
 
 # 加载sct脚本，内存布局
@@ -21,10 +35,10 @@ set(SECTIONS_SCRIPT_PATH ${CMAKE_HOME_DIRECTORY}/MDK-ARM/${PROJECT_NAME}/${PROJE
 # 设置target的编译选项
 set(C_TARGET_FLAG --target=arm-arm-none-eabi)
 set(ASM_TARGET_FLAG --target=arm-arm-none-eabi)
-set(LINKER_TARGET_FLAG --cpu=${CMAKE_SYSTEM_PROCESSOR})
+set(LINKER_TARGET_FLAG --cpu=cortex-m4)
 
 # 设置编译规则
-set(COMPILE_RULE_FLAG "-mcpu=${CMAKE_SYSTEM_PROCESSOR} -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c ")
+set(COMPILE_RULE_FLAG "-mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 
 
 # 设置 C 编译器选项(这里就把MDK中的 C/C++ 分页里最下边一栏的属性贴进来)
@@ -79,10 +93,14 @@ include_directories(
         D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 )
 # 使用 file(GLOB ...) 命令来获取源文件
+# FreeRTOS 相关源文件没有完全包含，建议添加：
 file(GLOB SOURCES
+        "MDK-ARM/startup_stm32f407xx.s"
         "Core/Src/*.c"
         "Drivers/STM32F4xx_HAL_Driver/Src/*.c"
         "Middlewares/Third_Party/FreeRTOS/Source/*.c"
+        "Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/*.c"  # 添加这行
+        "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/*.c"           # 添加这行
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${LINKER_SCRIPT})
