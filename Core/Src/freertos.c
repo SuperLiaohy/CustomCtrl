@@ -54,6 +54,27 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for OS_ServosTask */
+osThreadId_t OS_ServosTaskHandle;
+const osThreadAttr_t OS_ServosTask_attributes = {
+  .name = "OS_ServosTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for OS_DetectTask */
+osThreadId_t OS_DetectTaskHandle;
+const osThreadAttr_t OS_DetectTask_attributes = {
+  .name = "OS_DetectTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for OS_ButtonTask */
+osThreadId_t OS_ButtonTaskHandle;
+const osThreadAttr_t OS_ButtonTask_attributes = {
+  .name = "OS_ButtonTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -61,6 +82,9 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void ServosTask(void *argument);
+void DetectTask(void *argument);
+void ButtonTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -94,6 +118,15 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
+  /* creation of OS_ServosTask */
+  OS_ServosTaskHandle = osThreadNew(ServosTask, NULL, &OS_ServosTask_attributes);
+
+  /* creation of OS_DetectTask */
+  OS_DetectTaskHandle = osThreadNew(DetectTask, NULL, &OS_DetectTask_attributes);
+
+  /* creation of OS_ButtonTask */
+  OS_ButtonTaskHandle = osThreadNew(ButtonTask, NULL, &OS_ButtonTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -120,6 +153,60 @@ void StartDefaultTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
+}
+
+/* USER CODE BEGIN Header_ServosTask */
+/**
+* @brief Function implementing the OS_ServosTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ServosTask */
+__weak void ServosTask(void *argument)
+{
+  /* USER CODE BEGIN ServosTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ServosTask */
+}
+
+/* USER CODE BEGIN Header_DetectTask */
+/**
+* @brief Function implementing the OS_DetectTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_DetectTask */
+__weak void DetectTask(void *argument)
+{
+  /* USER CODE BEGIN DetectTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END DetectTask */
+}
+
+/* USER CODE BEGIN Header_ButtonTask */
+/**
+* @brief Function implementing the OS_ButtonTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ButtonTask */
+__weak void ButtonTask(void *argument)
+{
+  /* USER CODE BEGIN ButtonTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ButtonTask */
 }
 
 /* Private application code --------------------------------------------------*/
