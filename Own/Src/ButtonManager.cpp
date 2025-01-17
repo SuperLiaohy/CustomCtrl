@@ -22,7 +22,7 @@ void ButtonManager::Update() {
             button->status = ButtonStatus::OnUp;
             button->callback(button->status);
 
-            uint16_t delay_time = press_time - button->start_press_time;
+            uint16_t delay_time = present_time - button->start_press_time;
             if (delay_time > button->is_press_time && delay_time < button->is_long_press_time) {    //判断从按下到松开的时间是否在按压时间内，是的话为按压，要放在OnUp判断，这样可以避免长按的时候触发
                 button->status = ButtonStatus::OnPressing;
                 button->callback(button->status);

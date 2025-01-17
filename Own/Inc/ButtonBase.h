@@ -22,10 +22,10 @@ class ButtonBase {
 public:
     using Callback = void (*)(ButtonStatus);
 
-    ButtonBase(uint16_t longPressTime = 2000, uint16_t press_time=500, Callback callback= nullptr) : is_long_press_time(longPressTime), is_press_time(press_time), callback(callback){}
+    ButtonBase(uint16_t longPressTime = 2000, uint16_t press_time=100, Callback callback= nullptr) : is_long_press_time(longPressTime), is_press_time(press_time), callback(callback){}
 
     virtual ~ButtonBase() = default;
-    virtual GPIO_PinState GetState() = 0;
+    virtual uint8_t GetState() = 0;
     Callback callback;
 
     const uint16_t is_long_press_time;  //按下多久才算长按
