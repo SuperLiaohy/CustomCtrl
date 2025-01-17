@@ -29,14 +29,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(COMMON_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 
 # 设置编译器标志
-set(CMAKE_C_FLAGS "${COMMON_FLAGS} -xc -std=c99 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar")
+set(CMAKE_C_FLAGS "${COMMON_FLAGS} -c -xc -std=c99 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar")
 #set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
 set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -xc++ -std=c++20 -fno-rtti -fno-exceptions -funsigned-char -fshort-enums -fshort-wchar")
 set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} -masm=auto -Wa,--diag_suppress=A1950W")
 
 # 链接器标志
 set(CMAKE_EXE_LINKER_FLAGS
-        "--cpu=Cortex-M4 \
+        "--cpu=Cortex-M4.fp.sp \
     --strict \
     --scatter \"${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.sct\" \
     --summary_stderr --info summarysizes \

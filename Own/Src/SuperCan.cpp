@@ -68,6 +68,7 @@ void SuperCan::send(uint32_t id, uint8_t* data) {
 
 //    __weak SuperCan canPlus2(&hcan2);
 
+#include "CanServos.hpp"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -81,7 +82,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     if (hcan == canPlus1.hcan) {
         canPlus1.receive();
-        auto id = canPlus1.rx_header.StdId;
-				
+        servos.get_feedback();
     }
 }

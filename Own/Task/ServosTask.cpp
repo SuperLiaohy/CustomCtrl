@@ -4,7 +4,7 @@
 extern "C" void ServosTask(void* argument) {
     servos.unlock();
     for (;;) {
-        servos.read_all();
+        servos.read();
         osDelay(1);
 
     }

@@ -13,6 +13,13 @@ extern "C" {
 }
 #endif
 
+consteval float scale(float src, float head) {
+    return head / src;
+}
+constexpr float scale(float src_data, float src, float head) {
+    return src_data * head / src;
+}
+
 class CanServos {
 public:
     CanServos(uint8_t id, std::array<uint8_t, 4> id_card = {0, 0, 0, 0})
@@ -63,9 +70,18 @@ inline void CanServos::read() {
 
 inline void CanServos::get_feedback() {
     auto data = canPlus->read();
-    if (data[0] == 0x02) {
-        int16_t temp = (data[2] << 8) | data[1];
-        angle        = temp * 360.f / 4096.f;
+    if (canPlus->read_header()->StdId == id) {
+        switch (data[0]) {
+            case 0x02:
+                angle = (data[1] | (data[2] << 8)) * scale(4096, 360);
+                break;
+            case 0x07:
+//                idcard[0] = data[1];
+//                idcard[1] = data[2];
+//                idcard[2] = data[3];
+//                idcard[3] = data[4];
+                break;
+        }
     }
 }
 void CanServos::unlock() {

@@ -17,7 +17,7 @@ CanServos servos(6);
 
 CustomCtrl<6> custom_ctrl(&huart1);
 
-Button<GPIOA_BASE, GPIO_PIN_0, false> button1(2000,200, button_callback);
+Button<GPIOA_BASE, GPIO_PIN_0, false> button1(2000,20, button_callback);
 
 
 
