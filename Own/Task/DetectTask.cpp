@@ -1,4 +1,4 @@
-#include "../Task/Task.h"
+#include "CppTask.h"
 #include "Detect.h"
 extern "C" void DetectTask(void* argument) {
     while (1) {

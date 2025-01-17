@@ -72,13 +72,16 @@ void SuperCan::send(uint32_t id, uint8_t* data) {
 extern "C" {
 #endif
 #include "FreeRTOS.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #ifdef __cplusplus
 }
 #endif
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
-    static BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     if (hcan == canPlus1.hcan) {
+        canPlus1.receive();
+        auto id = canPlus1.rx_header.StdId;
+				
     }
 }
