@@ -47,4 +47,7 @@ template<uint32_t gpio, uint16_t pin, bool polarity>
 inline void Button<gpio, pin, polarity>::SetCallback(ButtonBase::Callback callback) {
     this->callback = callback;
 }
+
+void button_callback(ButtonStatus status);
+
 #endif //CUSTOMCTRL_BUTTON_H

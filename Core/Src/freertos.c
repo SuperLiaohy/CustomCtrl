@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "C:\Users\Administrator\Documents\Keil\CustomCtrl\Own\Task\Task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

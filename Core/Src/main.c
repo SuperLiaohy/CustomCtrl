@@ -95,7 +95,8 @@ int main(void)
   MX_CAN1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+//  HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_10);
+//  HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_11);
   /* USER CODE END 2 */
 
   /* Init scheduler */

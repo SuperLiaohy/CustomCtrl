@@ -9,7 +9,7 @@
 
 #include "SuperGPIO.h"
 
-enum class ButtonStatus {
+enum ButtonStatus {
     OnClick,
     OnLongPress,
     OnDown,

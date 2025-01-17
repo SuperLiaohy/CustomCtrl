@@ -3,6 +3,6 @@
 extern "C" void ButtonTask(void* argument) {
     for (;;) {
         ButtonManager::GetInstance().Update();
-        osDelay(1000);
+        osDelay(1);
     }
 }

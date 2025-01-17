@@ -15,6 +15,5 @@ SuperCan canPlus1(&hcan1, CAN_RX_FIFO0, CAN_IT_RX_FIFO0_MSG_PENDING);
 SuperCan* CanServos::canPlus =  &canPlus1;
 CustomCtrl<6> custom_ctrl(&huart1);
 
-Button<GPIOA_BASE, GPIO_PIN_0, false> button1;
-
+Button<GPIOA_BASE, GPIO_PIN_0, false> button1(2000,200, button_callback);
 
