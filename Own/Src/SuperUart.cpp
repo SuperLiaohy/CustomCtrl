@@ -3,17 +3,27 @@
 //
 
 #include "SuperUart.h"
-#include "Heap/CustomHeap.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "cmsis_os2.h"
+#include "FreeRTOS.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 SuperUart::SuperUart(UART_HandleTypeDef *_uart, const uint16_t bufferSize, const uint16_t tx_buffer_size) {
     if (bufferSize == 0) {
         rx_buffer = nullptr;
     } else {
-        rx_buffer = reinterpret_cast<uint8_t *>(D1Heap.malloc(bufferSize));
+        rx_buffer = reinterpret_cast<uint8_t *>(pvPortMalloc(bufferSize));
     }
     this->uart = _uart;
     if (tx_buffer_size != 0) {
-        tx_buffer = reinterpret_cast<uint8_t*>(D1Heap.malloc(tx_buffer_size)) ;
+        tx_buffer = reinterpret_cast<uint8_t*>(pvPortMalloc(tx_buffer_size)) ;
     } else {
         tx_buffer = nullptr;
     }
@@ -23,7 +33,7 @@ SuperUart::SuperUart(UART_HandleTypeDef *_uart, const uint16_t bufferSize, const
 }
 
 SuperUart::~SuperUart() {
-    D1Heap.free(tx_buffer);
+    vPortFree(tx_buffer);
 }
 
 void SuperUart::write(uint8_t *data, uint16_t size) {

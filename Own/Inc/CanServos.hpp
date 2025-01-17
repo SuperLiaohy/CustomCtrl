@@ -2,7 +2,7 @@
 #define __CAN_SERVOS_H
 
 #include "SuperCan.hpp"
-
+#include "Detect.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -13,20 +13,21 @@ extern "C" {
 
 class CanServos {
 public:
-    CanServos(SuperCan* canPlus, uint8_t id)
-        : id(id)
-        , canPlus(canPlus) {}
+    CanServos(uint8_t id)
+        : id(id), detect(500) {}
+    CanServos() : id(0), detect(500) {};
+    uint8_t id;
 
-    const uint8_t id;
+    Detect detect;
 
     float angle;
 
-    inline void read_all(); //广播读取位置，只挂载一个舵机，这样可以获取舵机的ID
+    static void read_all(); //广播读取位置，只挂载一个舵机，这样可以获取舵机的ID
 
     inline void get_feedback(); //获取反馈
 
+    static SuperCan* canPlus;
 private:
-    SuperCan* canPlus;
 };
 
 inline void CanServos::read_all() {

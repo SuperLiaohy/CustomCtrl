@@ -66,7 +66,6 @@ void SuperCan::send(uint32_t id, uint8_t* data) {
     }
 }
 
-SuperCan canPlus1(&hcan1, CAN_RX_FIFO0, CAN_IT_RX_FIFO0_MSG_PENDING);
 //    __weak SuperCan canPlus2(&hcan2);
 
 #ifdef __cplusplus

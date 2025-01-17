@@ -22,7 +22,7 @@ endif()
 
 # 编译器标准
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 通用编译标志
@@ -31,8 +31,8 @@ set(COMMON_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -
 # 设置编译器标志
 set(CMAKE_C_FLAGS "${COMMON_FLAGS} -xc -std=c99 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar")
 #set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
-set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -xc++  -fno-rtti -fno-exceptions -funsigned-char -fshort-enums -fshort-wchar")
-set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} -masm=auto")
+set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -xc++ -std=c++20 -fno-rtti -fno-exceptions -funsigned-char -fshort-enums -fshort-wchar")
+set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} -masm=auto -Wa,--diag_suppress=A1950W")
 
 # 链接器标志
 set(CMAKE_EXE_LINKER_FLAGS
@@ -63,9 +63,9 @@ include_directories(
         Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F
         Drivers/CMSIS/Device/ST/STM32F4xx/Include
         Drivers/CMSIS/Include
+#        "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
+#        "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
         Own/Inc
-        "D:/Keil_541_pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include"
-        "D:/Keil_541_pack/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 )
 
 # 获取源文件
@@ -80,6 +80,7 @@ file(GLOB SOURCES
 )
 file(GLOB OWN_SOURCES
         "Own/Src/*.c" "Own/Src/*.cpp"
+        "Own/Task/*.c" "Own/Task/*.cpp"
 )
 # 创建可执行文件
 add_executable(${PROJECT_NAME} ${SOURCES} ${OWN_SOURCES})
@@ -94,4 +95,11 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${TOOLCHAIN_PATH}/fromelf.exe --i32combined --output="${CMAKE_BINARY_DIR}/${PROJECT_NAME}.hex" "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.axf"
         COMMAND ${TOOLCHAIN_PATH}/fromelf.exe --bin --output="${CMAKE_BINARY_DIR}/${PROJECT_NAME}.bin" "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.axf"
         COMMENT "Building ${PROJECT_NAME}.hex and ${PROJECT_NAME}.bin"
+)
+# 可视化内存占用
+set(ARMCC_CALCELF "${TOOLCHAIN_PATH}/calcelf.exe")
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${ARMCC_CALCELF} -m "${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.map" -s "${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.sct"
+        COMMAND ${ARMCC_CALCELF} --format=progbar --map="${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.map"
+        --scatter="${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.sct"
 )

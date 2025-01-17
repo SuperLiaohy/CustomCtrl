@@ -5,6 +5,8 @@
 #include "SuperCan.hpp"
 
 #include "array"
+#include "SuperUart.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,19 +16,28 @@ extern "C" {
 }
 #endif
 
-enum Status{
-	INIT,
-	OPEN,
-	STOP,
+enum Status {
+    INIT,
+    OPEN,
+    STOP,
 };
 
+template <uint8_t T>
 class CustomCtrl {
 public:
-    CustomCtrl(SuperCan* canPlus)
-        : servos{CanServos(canPlus, 1), CanServos(canPlus, 2), CanServos(canPlus, 3), CanServos(canPlus, 4), CanServos(canPlus, 5), CanServos(canPlus, 6)} {}
-    std::array<CanServos, 6> servos;
-		Status s;
+    CustomCtrl(UART_HandleTypeDef *huart) : s(INIT), uartPlus(huart, 60, 30) {
+        for (int i = 0; i < T; i++) {
+            servos[i].id = i;
+        }
+    }
+    std::array<CanServos, T> servos;
 
+    Status s;
+
+private:
+    SuperUart uartPlus;
 };
+
+extern CustomCtrl<6> custom_ctrl;
 
 #endif
