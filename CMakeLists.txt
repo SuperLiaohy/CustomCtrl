@@ -46,7 +46,8 @@ set(CMAKE_EXE_LINKER_FLAGS
 
 # 添加编译定义
 add_compile_definitions(
-        ARM_MATH_CM4
+        ARM_MATH_CM7
+#        __FPU_PRESENT=1
         ARM_MATH_MATRIX_CHECK
         ARM_MATH_ROUNDING
         USE_HAL_DRIVER
