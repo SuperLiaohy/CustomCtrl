@@ -97,7 +97,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMENT "Building ${PROJECT_NAME}.hex and ${PROJECT_NAME}.bin"
 )
 # 可视化内存占用
-set(ARMCC_CALCELF "${TOOLCHAIN_PATH}/calcelf.exe")
+set(ARMCC_CALCELF "${CMAKE_SOURCE_DIR}/calcelf.exe")
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${ARMCC_CALCELF} -m "${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.map" -s "${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.sct"
         COMMAND ${ARMCC_CALCELF} --format=progbar --map="${CMAKE_SOURCE_DIR}/MDK-ARM/${PROJECT_NAME}/${PROJECT_NAME}.map"

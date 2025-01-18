@@ -4,7 +4,7 @@ set(CMAKE_SYSTEM_PROCESSOR cortex-m4)  # 明确指定处理器类型
 set(CMAKE_SYSTEM_ARCH armv7e-m)        # 指定架构
 
 # 设置工具链路径
-set(TOOLCHAIN_PATH "D:/Keil_541/ARM/ARMCLANG/bin")
+set(TOOLCHAIN_PATH "D:/Keil_v5/ARM/ARMCLANG/bin")
 
 # 设置编译器
 set(CMAKE_C_COMPILER "${TOOLCHAIN_PATH}/armclang.exe")
