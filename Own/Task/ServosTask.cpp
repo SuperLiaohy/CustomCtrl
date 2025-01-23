@@ -1,11 +1,18 @@
 #include "../Task/CppTask.h"
+#include "CanServos.hpp"
 #include "CustomCtrl.hpp"
 
-extern "C" void ServosTask(void* argument) {
-    servos.unlock();
+extern "C"
+    void ServosTask(void* argument) {
+    //    servos.unlock();
+    custom_ctrl.read();
+    osDelay(1000);
     for (;;) {
-        servos.read();
-        osDelay(1);
+//        custom_ctrl.read();
 
+        custom_ctrl.lock();
+//        servos.read_all();
+//        servos.set_pos_speed(0, 150);
+        osDelay(1);
     }
 }

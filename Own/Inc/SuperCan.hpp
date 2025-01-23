@@ -80,14 +80,14 @@ public:
 
     friend void ::HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan);
     friend void ::HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef* hcan);
-
+    CAN_RxHeaderTypeDef rx_header;
 private:
     uint32_t fifo;
     uint32_t fifo_start;
 
     CAN_HandleTypeDef* hcan;
     CAN_TxHeaderTypeDef tx_header;
-    CAN_RxHeaderTypeDef rx_header;
+
 
     uint8_t tx_data[8];
 

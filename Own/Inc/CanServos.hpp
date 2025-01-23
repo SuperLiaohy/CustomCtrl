@@ -38,19 +38,19 @@ public:
 
     static void read_all(); //广播读取位置，只挂载一个舵机，这样可以获取舵机的ID
 
-    inline void read(); //读取位置
+    void read() const; //读取位置
 
-    inline void unlock(); //解锁
+    void unlock() const; //解锁
 
-    inline void lock(); //锁定
+    void lock() const; //锁定
 
     inline void read_idcard(); //读取ID卡
 
     inline void change_id(uint8_t new_id); //修改ID
-
+    inline void read_id();
     inline void set_pos_speed(uint16_t pos, uint16_t speed); //设置速度
 
-    inline void get_feedback(); //获取反馈
+    inline bool get_feedback(); //获取反馈
 
     static SuperCan* canPlus;
 
@@ -63,12 +63,8 @@ inline void CanServos::read_all() {
     canPlus->send(0x00, data);
 };
 
-inline void CanServos::read() {
-    uint8_t data[8] = {0x01, 0, 0, 0, 0, 0, 0, 0};
-    canPlus->send(id, data);
-}
 
-inline void CanServos::get_feedback() {
+inline bool CanServos::get_feedback() {
     auto data = canPlus->read();
     if (canPlus->read_header()->StdId == id) {
         switch (data[0]) {
@@ -76,26 +72,24 @@ inline void CanServos::get_feedback() {
                 angle = (data[1] | (data[2] << 8)) * scale(4096, 360);
                 break;
             case 0x07:
-//                idcard[0] = data[1];
-//                idcard[1] = data[2];
-//                idcard[2] = data[3];
-//                idcard[3] = data[4];
+                //                idcard[0] = data[1];
+                //                idcard[1] = data[2];
+                //                idcard[2] = data[3];
+                //                idcard[3] = data[4];
                 break;
         }
+        return true;
     }
+    return false;
 }
-void CanServos::unlock() {
-    uint8_t data[8] = {0x2f, 0, 0, 0, 0, 0, 0, 0};
-    canPlus->send(id, data);
-}
-void CanServos::lock() {
-    uint8_t data[8] = {0x11, 0, 0, 0, 0, 0, 0, 1};
-    canPlus->send(id, data);
-}
+
 void CanServos::change_id(uint8_t new_id) {
     uint8_t data[8] = {0x07, new_id, idcard[0], idcard[1], idcard[2], idcard[3], 0, 0};
     canPlus->send(id, data);
     id = new_id;
+}
+void CanServos::read_id() {
+    id = canPlus->rx_header.StdId;
 }
 void CanServos::read_idcard() {
     uint8_t data[8] = {0x07, 0, 0, 0, 0, 0, 0, 0};

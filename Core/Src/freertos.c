@@ -75,6 +75,13 @@ const osThreadAttr_t OS_ButtonTask_attributes = {
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for OS_Transmit */
+osThreadId_t OS_TransmitHandle;
+const osThreadAttr_t OS_Transmit_attributes = {
+  .name = "OS_Transmit",
+  .stack_size = 384 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -85,6 +92,7 @@ void StartDefaultTask(void *argument);
 void ServosTask(void *argument);
 void DetectTask(void *argument);
 void ButtonTask(void *argument);
+void TransmitTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -126,6 +134,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of OS_ButtonTask */
   OS_ButtonTaskHandle = osThreadNew(ButtonTask, NULL, &OS_ButtonTask_attributes);
+
+  /* creation of OS_Transmit */
+  OS_TransmitHandle = osThreadNew(TransmitTask, NULL, &OS_Transmit_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -207,6 +218,24 @@ __weak void ButtonTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END ButtonTask */
+}
+
+/* USER CODE BEGIN Header_TransmitTask */
+/**
+* @brief Function implementing the OS_Transmit thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_TransmitTask */
+__weak void TransmitTask(void *argument)
+{
+  /* USER CODE BEGIN TransmitTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END TransmitTask */
 }
 
 /* Private application code --------------------------------------------------*/

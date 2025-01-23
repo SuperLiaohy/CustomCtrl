@@ -30,14 +30,14 @@ extern "C" {
 class SuperUart {
 private:
     UART_HandleTypeDef *uart;
-    uint8_t *tx_buffer;
+
     int32_t len;
 
 public:
 
     uint16_t tx_size;
     uint16_t rx_size;
-
+    uint8_t *tx_buffer;
     uint8_t *rx_buffer;
 
     explicit SuperUart(UART_HandleTypeDef *_uart, uint16_t bufferSize, uint16_t tx_buffer_size = 64);
