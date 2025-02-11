@@ -34,6 +34,7 @@ public:
 
     Detect detect;
 
+    uint16_t target;
     float angle;
 
     static void read_all(); //广播读取位置，只挂载一个舵机，这样可以获取舵机的ID

@@ -82,6 +82,13 @@ const osThreadAttr_t OS_Transmit_attributes = {
   .stack_size = 384 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for OS_ReceiveTask */
+osThreadId_t OS_ReceiveTaskHandle;
+const osThreadAttr_t OS_ReceiveTask_attributes = {
+  .name = "OS_ReceiveTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -93,6 +100,7 @@ void ServosTask(void *argument);
 void DetectTask(void *argument);
 void ButtonTask(void *argument);
 void TransmitTask(void *argument);
+void ReceiveTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -137,6 +145,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of OS_Transmit */
   OS_TransmitHandle = osThreadNew(TransmitTask, NULL, &OS_Transmit_attributes);
+
+  /* creation of OS_ReceiveTask */
+  OS_ReceiveTaskHandle = osThreadNew(ReceiveTask, NULL, &OS_ReceiveTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -236,6 +247,24 @@ __weak void TransmitTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END TransmitTask */
+}
+
+/* USER CODE BEGIN Header_ReceiveTask */
+/**
+* @brief Function implementing the OS_ReceiveTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ReceiveTask */
+__weak void ReceiveTask(void *argument)
+{
+  /* USER CODE BEGIN ReceiveTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ReceiveTask */
 }
 
 /* Private application code --------------------------------------------------*/

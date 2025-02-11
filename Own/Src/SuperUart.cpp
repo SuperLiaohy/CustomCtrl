@@ -184,3 +184,19 @@ uint8_t* SuperUart::read(uint8_t *pData, uint16_t size) {
 }
 
 
+#include "Interact.h"
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
+    UNUSED(Size);
+#if USING_UART_IDLE
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    if (huart == interact.uartPlus.uart) {
+        interact.get_feedback();
+        xHigherPriorityTaskWoken = pdTRUE;
+        portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    }
+
+
+#endif
+}
+
+
