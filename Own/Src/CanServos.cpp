@@ -1,5 +1,8 @@
 #include "CanServos.hpp"
 
+
+
+
 void CanServos::read() const {
     uint8_t data[8] = {0x01, 0, 0, 0, 0, 0, 0, 0};
     canPlus->send(id, data);
