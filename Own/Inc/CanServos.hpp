@@ -50,6 +50,7 @@ public:
     inline void change_id(uint8_t new_id); //修改ID
     inline void read_id();
     inline void set_pos_speed(uint16_t pos, uint16_t speed); //设置速度
+    void test(uint8_t cmd, int16_t pos, int16_t speed, uint8_t a, uint8_t b, uint8_t c ); //测试
 
     inline bool get_feedback(); //获取反馈
 

@@ -89,6 +89,11 @@ const osThreadAttr_t OS_ReceiveTask_attributes = {
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for CANmutex */
+osMutexId_t CANmutexHandle;
+const osMutexAttr_t CANmutex_attributes = {
+  .name = "CANmutex"
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -113,6 +118,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* creation of CANmutex */
+  CANmutexHandle = osMutexNew(&CANmutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */

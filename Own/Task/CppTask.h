@@ -8,11 +8,13 @@ extern "C" {
 #include "cmsis_os2.h"
 #include "FreeRTOS.h"
 #include "task.h"
+extern osMutexId_t CANmutexHandle;
 
 void ServosTask(void* argument);
 void DetectTask(void* argument);
 void ButtonTask(void* argument);
 void StartDefaultTask(void* argument);
+
 #ifdef __cplusplus
 }
 #endif

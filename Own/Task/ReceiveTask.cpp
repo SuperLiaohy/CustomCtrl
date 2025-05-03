@@ -7,6 +7,7 @@
 #include "Crc.h"
 #include "Interact.h"
 
+
 extern "C" void ReceiveTask(void* argument) {
 
     for (;;) {
@@ -14,8 +15,14 @@ extern "C" void ReceiveTask(void* argument) {
         vTaskSuspend((TaskHandle_t)OS_ReceiveTaskHandle);
         if (interact.frame_rx.s.enable_map_back) {
             interact.inverse_angle(custom_ctrl);
-            custom_ctrl.back_map();
+//            osMutexAcquire(CANmutexHandle, portMAX_DELAY);
+//            custom_ctrl.lock();
+//            osMutexRelease(CANmutexHandle);
 //            interact.set_map_back_over(1);
+        } else {
+            osMutexAcquire(CANmutexHandle, portMAX_DELAY);
+            custom_ctrl.unlock();
+            osMutexRelease(CANmutexHandle);
         }
     }
 }

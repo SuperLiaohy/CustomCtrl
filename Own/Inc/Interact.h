@@ -9,13 +9,12 @@
 #include "SuperUart.h"
 #include "array"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "cmsis_os2.h"
 #include "cmsis_os.h"
+#include "cmsis_os2.h"
 extern osThreadId_t OS_ReceiveTaskHandle;
 
 #ifdef __cplusplus
@@ -33,7 +32,9 @@ namespace interact_dep {
     struct tx_status {
         uint8_t map_back_over : 1;
         uint8_t lock : 1;
-        uint8_t none : 6;
+        uint8_t pump : 1;
+        uint8_t valve : 1;
+        uint8_t none : 4;
     } __attribute__((packed));
 
     template<uint8_t T>
@@ -69,7 +70,7 @@ namespace interact_dep {
     } __attribute__((packed));
 
     float transform(float angle);
-    float inverse(float angle);
+    float inverse(float angle, float offset);
     float limit(float angle, float min, float max);
 } // namespace interact_dep
 
@@ -89,7 +90,10 @@ public:
     interact_dep::custom_rx_frame<n> frame_rx;
 
     void set_map_back_over(uint8_t is_over) { frame_tx.s.map_back_over = is_over; };
+    void set_pump(uint8_t sa) { frame_tx.s.pump = sa; };
+    void set_valve(uint8_t sa) { frame_tx.s.valve = sa; };
 
+    void start() { uartPlus.read_idle(100); }
     void get_angle(CustomCtrl<n>& ctrl);
     void inverse_angle(CustomCtrl<n>& ctrl);
     void transmit();
@@ -128,7 +132,7 @@ void Interact<n>::get_angle(CustomCtrl<n>& ctrl) {
 template<uint8_t n>
 void Interact<n>::inverse_angle(CustomCtrl<n>& ctrl) {
     for (int i = 0; i < n; ++i) {
-        target[i]             = interact_dep::inverse(interact_dep::limit(custom_ctrl_dep::polarity[i] * frame_rx.joint[i], custom_ctrl_dep::self_min[i], custom_ctrl_dep::self_max[i]) * scale(4096, 360)) + custom_ctrl_dep::offset[i];
+        target[i]             = interact_dep::inverse(interact_dep::limit(custom_ctrl_dep::polarity[i] * frame_rx.joint[i] * scale(4096, 360), custom_ctrl_dep::self_min[i], custom_ctrl_dep::self_max[i]), custom_ctrl_dep::offset[i]);
         ctrl.servos[i].target = target[i] * scale(360, 4096);
     }
 }
@@ -143,9 +147,9 @@ void Interact<n>::get_feedback() {
             switch (cmd_id) {
                 case 0x302:
                     receive(&buff[7]);
-//                    if (frame_rx.s.enable_map_back) {
-//                        set_map_back_over(0);
-//                    }
+                    //                    if (frame_rx.s.enable_map_back) {
+                    //                        set_map_back_over(0);
+                    //                    }
                     break;
                 case 0x304:
                     break;

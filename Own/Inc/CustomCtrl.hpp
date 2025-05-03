@@ -15,7 +15,7 @@ extern "C" {
 }
 #endif
 namespace custom_ctrl_dep {
-    constexpr std::array<float, 6> offset = {84.375, 264.375, 327.832031, 4.48242188, 0.263671875, 5.53710938};
+    constexpr std::array<float, 6> offset = {171.5625, 264.375, 327.832031, 4.48242188, 0.263671875, 5.53710938};
     constexpr std::array<float, 6> min    = {-45, -50, -135, -180, -90, -180};
     constexpr std::array<float, 6> max    = {45, 90, 135, 180, 90, 180};
     constexpr std::array<float, 6> self_min    = {-45, -50, -120, -180, -90, -180};
@@ -58,7 +58,7 @@ private:
 template<uint8_t T>
 void CustomCtrl<T>::back_map() {
     for (auto & item: servos) {
-        item.set_pos_speed(item.target, 5);
+        item.set_pos_speed(item.target, 100);
         osDelay(1);
     }
 }
@@ -83,8 +83,8 @@ void CustomCtrl<T>::get_feedback() {
 template<uint8_t T>
 void CustomCtrl<T>::lock() {
     for (auto& item: servos) {
-        //        item.lock();
-        item.set_pos_speed(item.angle / 360.f * 4096, 5);
+                item.lock();
+//        item.set_pos_speed(item.angle / 360.f * 4096, 50);
         osDelay(1);
     }
 }
