@@ -6,3 +6,8 @@ MDK-ARM/*
 
 !MDK-ARM/startup_stm32f407xx.s
 
+!MDK-ARM/CustomCtrl.uvprojx
+
+!MDK-ARM/CustomCtrl.uvoptx
+
+
