@@ -15,9 +15,9 @@ extern "C" {
 }
 #endif
 namespace custom_ctrl_dep {
-    constexpr std::array<float, 6> offset = {171.5625, 264.375, 327.832031, 4.48242188, 0.263671875, 5.53710938};
-    constexpr std::array<float, 6> min    = {-45, -50, -135, -180, -90, -180};
-    constexpr std::array<float, 6> max    = {45, 90, 135, 180, 90, 180};
+    constexpr std::array<float, 6> offset = {173.671875, 85.2539062, 213.925781, 4.48242188, 0.263671875, 5.53710938};
+    constexpr std::array<float, 6> min    = {-45, -55, -145, -180, -90, -180};
+    constexpr std::array<float, 6> max    = {45, 55, 145, 180, 90, 180};
     constexpr std::array<float, 6> self_min    = {-45, -50, -120, -180, -90, -180};
     constexpr std::array<float, 6> self_max    = {45, 90, 120, 180, 90, 180};
     constexpr std::array<int8_t, 6> polarity = {1, 1, 1, 1, -1, -1};
@@ -57,10 +57,14 @@ private:
 };
 template<uint8_t T>
 void CustomCtrl<T>::back_map() {
-    for (auto & item: servos) {
-        item.set_pos_speed(item.target, 100);
+    for (int i = 0; i < 3; ++i) {
+        servos[i].set_pos_speed(servos[i].target, 100);;
         osDelay(1);
     }
+    // for (auto & item: servos) {
+        // item.set_pos_speed(item.target, 100);
+        // osDelay(1);
+    // }
 }
 
 template<uint8_t T>

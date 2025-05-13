@@ -11,7 +11,7 @@ extern Button button_valve;
 extern "C" void ButtonTask(void* argument) {
     for (;;) {
         ButtonManager::GetInstance().Update();
-        osDelay(1);
+        osDelay(3);
     }
 }
 

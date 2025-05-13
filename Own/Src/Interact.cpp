@@ -17,9 +17,9 @@ namespace interact_dep {
 
     float inverse(float angle, float offset) {
         if (offset < 180) {
-            if (-180 < angle && angle < -offset) { angle += 360; }
+            if (-180 <= angle && angle < -offset) { angle += 360; }
         } else {
-            if (360 - offset < angle && angle < 180) { angle -= 360; }
+            if (360 - offset < angle && angle <= 180) { angle -= 360; }
         }
         return angle+offset;
     }

@@ -19,9 +19,6 @@ extern "C" void ServosTask(void* argument) {
     for (;;) {
         osMutexAcquire(CANmutexHandle, portMAX_DELAY);
         custom_ctrl.read();
-        //        custom_ctrl.lock();
-        //        custom_ctrl.lock();
-//        custom_ctrl.servos[5].test(cmd, pos * 4096 / 360, speed, a, b, c);
         osMutexRelease(CANmutexHandle);
         //        servos.read_all();
         //        servos.set_pos_speed(0, 150);

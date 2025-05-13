@@ -46,7 +46,8 @@ namespace interact_dep {
     struct rx_status {
         uint8_t enable_map_back : 1;
         uint8_t lock : 1;
-        uint8_t none : 6;
+        uint8_t pump : 1;
+        uint8_t none : 5;
     } __attribute__((packed));
 
     template<uint8_t T>
@@ -146,7 +147,6 @@ void Interact<n>::get_feedback() {
         if (crc::verify_crc16_check_sum(buff, len + 9)) {
             switch (cmd_id) {
                 case 0x302:
-                    receive(&buff[7]);
                     //                    if (frame_rx.s.enable_map_back) {
                     //                        set_map_back_over(0);
                     //                    }
@@ -156,6 +156,8 @@ void Interact<n>::get_feedback() {
                 case 0x306:
                     break;
                 case 0x309:
+                    receive(&buff[7]);
+
                     break;
                 default:
                     break;
