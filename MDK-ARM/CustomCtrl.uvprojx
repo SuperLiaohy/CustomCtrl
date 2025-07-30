@@ -10,7 +10,7 @@
       <TargetName>CustomCtrl</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6210000::V6.21::ARMCLANG</pCCUsed>
+      <pCCUsed>6230000::V6.23::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1014,22 +1014,22 @@
 
   <RTE>
     <apis>
-      <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" condition="CortexDevice" exclusive="1">
-        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+      <api Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" condition="CortexDevice" exclusive="1">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
         <targetInfos>
           <targetInfo name="CustomCtrl"/>
         </targetInfos>
       </api>
     </apis>
     <components>
-      <component Cclass="CMSIS-Compiler" Cgroup="CORE" Cvendor="ARM" Cversion="1.1.0" condition="ARMCC CortexDevice">
-        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+      <component Cclass="CMSIS-Compiler" Cgroup="CORE" Cvendor="ARM" Cversion="1.0.0" condition="ARMCC CortexDevice">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
         <targetInfos>
           <targetInfo name="CustomCtrl"/>
         </targetInfos>
       </component>
-      <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
-        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+      <component Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" Csub="ITM" Cvendor="ARM" Cversion="1.0.0" condition="CORE ITM">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
         <targetInfos>
           <targetInfo name="CustomCtrl"/>
         </targetInfos>

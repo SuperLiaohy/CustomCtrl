@@ -10,19 +10,23 @@
 
 extern "C" void ReceiveTask(void* argument) {
     interact.frame_rx.s.enable_map_back = 0;
+		osMutexAcquire(CANmutexHandle, portMAX_DELAY);
+    custom_ctrl.unlock();
+		osMutexRelease(CANmutexHandle);
     for (;;) {
         using namespace crc;
-        vTaskSuspend((TaskHandle_t)OS_ReceiveTaskHandle);
-        if (interact.frame_rx.s.enable_map_back) {
-            interact.inverse_angle(custom_ctrl);
-            osMutexAcquire(CANmutexHandle, portMAX_DELAY);
-            custom_ctrl.back_map();
-            osMutexRelease(CANmutexHandle);
-//            interact.set_map_back_over(1);
-        } else {
+//        vTaskSuspend((TaskHandle_t)OS_ReceiveTaskHandle);
+//        if (interact.frame_rx.s.enable_map_back) {
+//            interact.inverse_angle(custom_ctrl);
+//            osMutexAcquire(CANmutexHandle, portMAX_DELAY);
+//            custom_ctrl.back_map();
+//            osMutexRelease(CANmutexHandle);
+////            interact.set_map_back_over(1);
+//        } else {
             osMutexAcquire(CANmutexHandle, portMAX_DELAY);
             custom_ctrl.unlock();
             osMutexRelease(CANmutexHandle);
-        }
+			osDelay(100);
+//        }
     }
 }
