@@ -46,7 +46,8 @@ void button_valve_callback(ButtonStatus status){
         case ButtonStatus::OnPressing:
             interact.set_valve(openc);
             openc = 1 - openc;
-				case ButtonStatus::OnClick:
+            break;
+        case ButtonStatus::OnClick:
         case ButtonStatus::OnDown:
         case ButtonStatus::OnLongPress:
         case ButtonStatus::OnUp:

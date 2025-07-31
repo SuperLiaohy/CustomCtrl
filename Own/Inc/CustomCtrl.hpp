@@ -15,7 +15,7 @@ extern "C" {
 }
 #endif
 namespace custom_ctrl_dep {
-    constexpr std::array<float, 6> offset = {173.671875, 85.2539062, 213.925781, 273.955078, 280.458984, 262.617188};
+    constexpr std::array<float, 6> offset = {173.671875, 85.2539062, 213.925781, 273.955078 - 90, 280.458984, 262.617188};
     constexpr std::array<float, 6> min    = {-55, -55, -145, -180, -90, -180};
     constexpr std::array<float, 6> max    = {55, 55, 145, 180, 90, 180};
     constexpr std::array<float, 6> self_min    = {-45, -55, -145, -180, -90, -180};
